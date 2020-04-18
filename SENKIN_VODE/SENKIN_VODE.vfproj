@@ -27,6 +27,8 @@
 		<Filter Name="Header Files" Filter="fi;fd;h;inc"/>
 		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
 		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath=".\chemkin_m.f90"/>
+		<File RelativePath=".\cklib.f"/>
 		<File RelativePath=".\dvode_f90_m.f90"/>
 		<File RelativePath=".\example1.f90"/></Filter></Files>
 	<Globals/></VisualStudioProject>

@@ -1,26 +1,5 @@
     MODULE EXAMPLE1
 
-! DEMONSTRATION PROGRAM FOR THE DVODE_F90 PACKAGE.
-
-! The following is a simple example problem, with the coding
-! needed for its solution by DVODE_F90. The problem is from
-! chemical kinetics, and consists of the following three rate
-! equations:
-!     dy1/dt = -.04d0*y1 + 1.d4*y2*y3
-!     dy2/dt = .04d0*y1 - 1.d4*y2*y3 - 3.d7*y2**2
-!     dy3/dt = 3.d7*y2**2
-! on the interval from t = 0.0d0 to t = 4.d10, with initial
-! conditions y1 = 1.0d0, y2 = y3 = 0.0d0. The problem is stiff.
-
-! The following coding solves this problem with DVODE_F90,
-! using a user supplied Jacobian and printing results at
-! t = .4, 4.,...,4.d10. It uses ITOL = 2 and ATOL much smaller
-! for y2 than y1 or y3 because y2 has much smaller values. At
-! the end of the run, statistical quantities of interest are
-! printed. (See optional output in the full DVODE description
-! below.) Output is written to the file example1.dat.
-
-
     CONTAINS
 
       SUBROUTINE FEX(NEQ,T,Y,YDOT)
@@ -55,10 +34,11 @@
 
 !******************************************************************
 
-    PROGRAM RUNEXAMPLE1
+    PROGRAM SENKIN_VODE
 
       USE DVODE_F90_M
       USE EXAMPLE1
+      use chemkin
 
       IMPLICIT NONE
       DOUBLE PRECISION ATOL, RTOL, T, TOUT, Y, RSTATS
@@ -66,6 +46,8 @@
       DIMENSION Y(3), ATOL(3), RSTATS(22), ISTATS(31)
 
       TYPE (VODE_OPTS) :: OPTIONS
+      
+      call initialize()
 
       OPEN (UNIT=6,FILE='example1.dat')
       IERROR = 0
@@ -114,4 +96,4 @@
 90003 FORMAT (' At t =',D12.4,'   y =',3D14.6)
 90004 FORMAT (///' Error halt: ISTATE =',I3)
       STOP
-    END PROGRAM RUNEXAMPLE1
+    END PROGRAM SENKIN_VODE
