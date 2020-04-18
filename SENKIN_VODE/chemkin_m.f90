@@ -3,17 +3,15 @@
     implicit none
       
     ! define length of work array
-    !integer, parameter, private :: leniwk = 14271
-    !integer, parameter, private :: lenrwk = 10177
-    !integer, parameter, private :: lencwk = 10000
-    integer :: leniwk = 14271
-    integer :: lenrwk = 10177
-    integer :: lencwk = 10000
+    integer :: leniwk
+    integer :: lenrwk
+    integer :: lencwk
     
     ! define unit number
     integer, parameter, private :: linck  = 25
     integer, parameter, private :: lout   = 16
     
+    ! define total number of the values
     integer num_elem
     integer num_spec
     integer num_reac
@@ -30,7 +28,7 @@
       
     contains
       
-      subroutine initialize()
+      subroutine ck_initialize()
         ! open input output files
         open(linck, file='cklink', form='unformatted')
         open(lout, file='skout', form='formatted')
@@ -51,6 +49,6 @@
         allocate(name_spec(num_spec))
         call cksyms(cckwrk, lout, name_spec, ierr)
         
-      end subroutine initialize
+      end subroutine ck_initialize
     
     end module chemkin

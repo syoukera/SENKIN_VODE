@@ -2,24 +2,3 @@
   CKLIB:  Chemical Kinetics Library
           CHEMKIN-II Version 4.2, September 1993
           DOUBLE PRECISION
- H               H2              O               O2              
- OH              H2O             N2              HO2             
- H2O2            AR              HE              CO              
- CO2             CH2O            HCO             HOCHO           
- OCHO            HOCH2O          CH3OH           CH2OH           
- CH3O            CH3O2H          CH3O2           CH4             
- CH3             CH2             CH2(S)          C               
- CH              HOCO            HCOH            C2H6            
- C2H5            C2H4            C2H3            C2H2            
- C2H             CH3CHO          CH3CO           CH2CHO          
- CH2CO           HCCO            H2CC            C2O             
- HCCOH           CH3CO3H         CH3CO3          CH3CO2          
- C2H5OH          C2H5O           CH2CH2OH        CH3CHOH         
- O2C2H4OH        C2H5O2H         C2H5O2          C2H4O2H         
- C2H4O1-2        C2H3O1-2        CH2CHOH         CH3OCHO         
- CH2OCHO         CH3OCO          C2H5OCHO        C2H5OCO         
- CH2CH2OCHO      CH3CHOCHO       OH*             CH*             
- KR              CH4+            CH3+            CH2+            
- O2(A1)          O2(B1)          O2(4.5eV)       O(1D)           
- O(1S)           O2+             O+              O3              
- He(Singlet)     He+             E               

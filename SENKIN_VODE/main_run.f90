@@ -1,4 +1,4 @@
-    MODULE EXAMPLE1
+    module main_module
 
     CONTAINS
 
@@ -30,14 +30,14 @@
         RETURN
       END SUBROUTINE JEX
 
-    END MODULE EXAMPLE1
+    end module main_module
 
 !******************************************************************
 
-    PROGRAM SENKIN_VODE
+    program senkin_vode
 
       USE DVODE_F90_M
-      USE EXAMPLE1
+      use main_module
       use chemkin
 
       IMPLICIT NONE
@@ -47,7 +47,7 @@
 
       TYPE (VODE_OPTS) :: OPTIONS
       
-      call initialize()
+      call ck_initialize()
 
       OPEN (UNIT=6,FILE='example1.dat')
       IERROR = 0
@@ -96,4 +96,4 @@
 90003 FORMAT (' At t =',D12.4,'   y =',3D14.6)
 90004 FORMAT (///' Error halt: ISTATE =',I3)
       STOP
-    END PROGRAM SENKIN_VODE
+    end program senkin_vode
