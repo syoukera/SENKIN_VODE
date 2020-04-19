@@ -2,8 +2,12 @@
 
       use dvode_f90_m
       use main_module
+    
+      implicit none
       
       call mn_initialize()
+      
+      call fex()
       
       !call mn_solve()
       
