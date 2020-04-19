@@ -5,7 +5,7 @@
       
       call mn_initialize()
       
-      call mn_solve()
+      !call mn_solve()
       
 
       !IMPLICIT NONE

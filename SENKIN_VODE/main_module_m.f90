@@ -5,7 +5,9 @@
     ! initial conditions 
     real(8), parameter, private :: temperature_ini = 800d0    ! [K]
     real(8), parameter, private :: pressure        = 101325d0 ! [Pa]
-    real(8), allocatable        :: y_ini(:)                   ! mass fraction [-]
+    integer, parameter, private :: num_ini = 3
+    real(8)      :: y_ini(num_ini)        ! name
+    character(6) :: name_ini(num_ini)*16  ! mass fraction [-]
     
     ! simulation conditions
     real(8), parameter, private :: time_end = 1.0d0   ! [s]
@@ -18,6 +20,9 @@
     real(8) time, time_out
     real(8), allocatable :: z(:)
     real(8), allocatable :: zdot(:)
+    
+    data y_ini /0.0511d0, 0.179d0, 0.769d0/
+    data name_ini /'CH4', 'N2', 'O2'/
     
     CONTAINS
     
@@ -65,8 +70,31 @@
         ! allocate dependent variables
         allocate(z(num_eqns))
         allocate(zdot(num_eqns))
-    
+        
+        ! assign initial values
+        call mn_assign_ini()
+        
       end subroutine mn_initialize
+      
+      ! ---
+      
+      subroutine mn_assign_ini()
+      
+        integer i, idx_ith_spec
+        character(6) name_ith_spec
+        
+        ! assign initial temperature
+        z(1) = temperature_ini
+        
+        ! assign initial mass fraction
+        do i = 1, num_ini
+          name_ith_spec = name_ini(i)
+          ! get index from species name
+          call ckcomp(name_ith_spec, name_spec, num_spec, idx_ith_spec)
+          z(idx_ith_spec+1) = y_ini(i)
+        enddo
+        
+      end subroutine mn_assign_ini
       
       ! ---
         
