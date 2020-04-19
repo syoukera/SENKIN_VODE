@@ -30,5 +30,6 @@
 		<File RelativePath=".\chemkin_m.f90"/>
 		<File RelativePath=".\cklib.f"/>
 		<File RelativePath=".\dvode_f90_m.f90"/>
+		<File RelativePath=".\main_module_m.f90"/>
 		<File RelativePath=".\main_run.f90"/></Filter></Files>
 	<Globals/></VisualStudioProject>

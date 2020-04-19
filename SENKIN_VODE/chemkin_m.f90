@@ -11,14 +11,15 @@
     integer, parameter, private :: linck  = 25
     integer, parameter, private :: lout   = 16
     
-    ! define total number of values
+    !total number of values
     integer num_elem
     integer num_spec
     integer num_reac
+    integer num_eqns
     integer num_coef
     logical ierr
     
-    ! declear work array
+    ! work array
     integer,      allocatable :: ickwrk(:)
     real(8),      allocatable :: rckwrk(:)
     character(6), allocatable :: cckwrk(:)*16
@@ -26,7 +27,7 @@
     ! species value
     character(6), allocatable :: name_spec(:)*16
     real(8),      allocatable :: weight_spec(:)
-
+        
     contains
       
       subroutine ck_initialize()
@@ -63,6 +64,7 @@
         ! get total number of values
         call ckindx(ickwrk, rckwrk, num_elem, num_spec,   &
                     num_reac, num_coef)
+        num_eqns = num_spec + 1
       
         ! get species names
         allocate(name_spec(num_spec))
